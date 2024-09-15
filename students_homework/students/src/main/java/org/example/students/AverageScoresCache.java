@@ -1,6 +1,6 @@
 package org.example.students;
 
-import com.sun.source.tree.BreakTree;
+import Exceptions.ItemNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +14,12 @@ public class AverageScoresCache implements StudentsSubjectsAverageCache {
     public double getAverageScoreForSubjectFromCache(String subject) {
 
         double averageScore = 0;
-
-        for(String actualSubject : averageScoresCache.keySet()) {
-            if(actualSubject.equals(subject)) {
-                averageScore = averageScoresCache.get(actualSubject);
-            }
+        if(averageScoresCache.containsKey(subject)) {
+            averageScore = averageScoresCache.get(subject);
+        } else {
+            System.out.print("This subject doesn't exist in the base ");
         }
+
 
 
         System.out.println(averageScore);
